@@ -30,7 +30,8 @@
         android:layout_centerVertical="true"
         android:layout_alignStart="@+id/emailAdress_text"
         android:layout_alignEnd="@+id/emailAdress_text"
-        android:textAlignment="center" />
+        android:textAlignment="center"
+        android:inputType="textPassword" />
 
     <Button
         android:layout_width="wrap_content"
@@ -39,4 +40,13 @@
         android:id="@+id/loginBtn"
         android:layout_below="@+id/password_text"
         android:layout_alignParentStart="true" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Show Password"
+        android:id="@+id/showBtn"
+        android:layout_below="@+id/password_text"
+        android:layout_alignEnd="@+id/password_text"
+        android:textColor="@color/abc_background_cache_hint_selector_material_light" />
 </RelativeLayout>

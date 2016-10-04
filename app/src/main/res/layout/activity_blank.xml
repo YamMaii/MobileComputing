@@ -20,4 +20,13 @@
         android:textColor="@android:color/holo_blue_dark"
         android:textStyle="bold"
         android:textSize="@dimen/abc_dropdownitem_icon_width" />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Swiped Direction"
+        android:id="@+id/swipedBtn"
+        android:layout_below="@+id/textView"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="56dp" />
 </RelativeLayout>

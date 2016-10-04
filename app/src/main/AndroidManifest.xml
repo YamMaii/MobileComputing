@@ -16,7 +16,8 @@
             </intent-filter>
         </activity>
         <activity android:name=".SplashScreen" />
-        <activity android:name=".blank"></activity>
+        <activity android:name=".blank" />
+        <activity android:name=".OnTouchActivity"></activity>
     </application>
 
 </manifest>

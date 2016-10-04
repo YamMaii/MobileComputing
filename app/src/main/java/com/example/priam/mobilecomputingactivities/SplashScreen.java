@@ -3,8 +3,9 @@ package com.example.priam.mobilecomputingactivities;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.app.Activity;
 
-public class SplashScreen extends AppCompatActivity {
+public class SplashScreen extends Activity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

@@ -11,40 +11,50 @@ import android.widget.TextView;
 import android.widget.Toast;
 import android.view.MotionEvent;
 
+import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 public class MainActivity extends AppCompatActivity {
-
+    DatabaseHelper accountsDb;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        final EditText emailValidate = (EditText) findViewById(R.id.emailAdress_text);
-        final EditText passwordFormat = (EditText) findViewById(R.id.password_text);
+        final EditText loginEmail = (EditText) findViewById(R.id.emailAdress_text);
+        final EditText loginPassword = (EditText) findViewById(R.id.password_text);
         final Button button = (Button) findViewById(R.id.loginBtn);
         final TextView showBtn = (TextView) findViewById(R.id.showBtn);
+        accountsDb = new DatabaseHelper(this);
         button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                final String email = emailValidate.getText().toString();
-                final String password = passwordFormat.getText().toString();
+                String loginE = loginEmail.getText().toString().trim();
+                String loginPass = loginPassword.getText().toString().trim();
 
-                if (validate(email) && password.length() >= 8) {
-                    Toast.makeText(getApplicationContext(), "Login Successful!", Toast.LENGTH_SHORT).show();
-                    Intent intent = new Intent(MainActivity.this, blank.class);
-                    startActivity(intent);
-                }
-                if (!validate(email) || password.length() < 8) {
-                    if (!validate(email)) {
-                        Toast.makeText(getApplicationContext(), "Invalid E-mail Address!", Toast.LENGTH_SHORT).show();
+                String verifyUser = accountsDb.getSingleEntryUname(loginE);
+                String verifyEmail = accountsDb.getSingleEntryEmail(loginE);
+
+                //If user entered his/her email address.
+                if(validate(loginE)){
+                    if (loginPass.equals(verifyEmail)) {
+                        Intent myIntent = new Intent(MainActivity.this, blank.class);
+                        startActivity(myIntent);
+                        finish();
+                    }else{
+                        Toast.makeText(MainActivity.this,"Invalid Username/Email and Password", Toast.LENGTH_LONG).show();
+                        loginEmail.requestFocus();
                     }
-                    if (password.length() < 8) {
-                        Toast.makeText(getApplicationContext(), "Invalid Password!", Toast.LENGTH_SHORT).show();
-                    }
                 }
-                if (!validate(email) && password.length() < 8){
-                    Toast.makeText(getApplicationContext(), "Invalid E-Mail or Password!", Toast.LENGTH_SHORT).show();
+                //If user entered his/her username.
+                else if(loginPass.equals(verifyUser)) {
+                    Intent myIntent = new Intent(MainActivity.this, blank.class);
+                    startActivity(myIntent);
+                    finish();
+                }
+                else{
+                    Toast.makeText(MainActivity.this,"Invalid Username/Email and Password", Toast.LENGTH_LONG).show();
+                    loginEmail.requestFocus();
                 }
             }
 
@@ -71,12 +81,13 @@ public class MainActivity extends AppCompatActivity {
 
         private boolean validate(String email){
 
-                           return Pattern.compile("^(([\\w-]+\\.)+[\\w-]+|([a-zA-Z]{1}|[\\w-]{2,}))@"
-                                   + "((([0-1]?[0-9]{1,2}|25[0-5]|2[0-4][0-9])\\.([0-1]?"
-                                   + "[0-9]{1,2}|25[0-5]|2[0-4][0-9])\\."
-                                   + "([0-1]?[0-9]{1,2}|25[0-5]|2[0-4][0-9])\\.([0-1]?"
-                                   + "[0-9]{1,2}|25[0-5]|2[0-4][0-9])){1}|"
-                                   + "([a-zA-Z]+[\\w-]+\\.)+[a-zA-Z]{2,4})$").matcher(email).matches();
+            String emailPattern = "^[_A-Za-z0-9-\\+]+(\\.[_A-Za-z0-9-]+)*@"
+                    + "[A-Za-z0-9-]+(\\.[A-Za-z0-9]+)*(\\.[A-Za-z]{2,})$";
+
+            Pattern pattern = Pattern.compile(emailPattern);
+            Matcher matcher = pattern.matcher(email);
+
+            return matcher.matches();
         }
 }
 

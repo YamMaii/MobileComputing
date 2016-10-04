@@ -25,6 +25,7 @@ public class MainActivity extends AppCompatActivity {
         final EditText loginPassword = (EditText) findViewById(R.id.password_text);
         final Button button = (Button) findViewById(R.id.loginBtn);
         final TextView showBtn = (TextView) findViewById(R.id.showBtn);
+        final TextView register = (TextView) findViewById(R.id.registerBtn);
         accountsDb = new DatabaseHelper(this);
         button.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -77,6 +78,15 @@ public class MainActivity extends AppCompatActivity {
                             }
 
                             });
+        register.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                //Toast.makeText(MainActivity.this,"Input Validation Success", Toast.LENGTH_LONG).show();
+
+                Intent myIntent = new Intent(v.getContext(), Register.class);
+                startActivityForResult(myIntent, 0);
+                onPause();
+            }
+        });
     }
 
         private boolean validate(String email){

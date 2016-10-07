@@ -27,6 +27,7 @@ public class MainActivity extends AppCompatActivity {
         final TextView showBtn = (TextView) findViewById(R.id.showBtn);
         final TextView register = (TextView) findViewById(R.id.registerBtn);
         accountsDb = new DatabaseHelper(this);
+
         button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

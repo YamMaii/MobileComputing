@@ -10,62 +10,62 @@
     tools:context="com.example.priam.mobilecomputingactivities.MainActivity"
     android:background="@drawable/bgyam">
 
-    <EditText
+    <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/emailAdress_text"
-        android:hint="@string/enter_email_address"
-        android:textColorHint="@color/abc_background_cache_hint_selector_material_light"
-        android:textAlignment="center"
-        android:textColor="@color/abc_background_cache_hint_selector_material_light"
-        android:layout_above="@+id/password_text"
-        android:inputType="text"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentEnd="true" />
-
-    <EditText
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/password_text"
-        android:hint="@string/enter_password"
-        android:textColorHint="@color/abc_background_cache_hint_selector_material_light"
-        android:textAlignment="center"
-        android:inputType="textPassword"
-        android:textColor="@color/abc_background_cache_hint_selector_material_light"
-        android:layout_centerVertical="true"
-        android:layout_alignParentEnd="true"
-        android:layout_alignParentStart="true" />
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:text="Register"
+        android:id="@+id/registerBtn"
+        android:layout_below="@+id/loginBtn"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="57dp"
+        android:textColor="@color/abc_primary_text_material_dark" />
 
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/login"
+        android:text="Login"
         android:id="@+id/loginBtn"
-        android:layout_marginTop="30dp"
-        android:layout_below="@+id/password_text"
-        android:layout_centerHorizontal="true"
-        android:textColor="#ffffff"
-        android:shadowColor="#000000"
-        android:background="@color/button_material_dark"/>
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/show"
-        android:id="@+id/showBtn"
-        android:textColor="@color/abc_background_cache_hint_selector_material_light"
-        android:textStyle="bold"
-        android:layout_below="@+id/password_text"
-        android:layout_alignParentEnd="true"
-        android:layout_marginEnd="35dp" />
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Register"
-        android:id="@+id/registerBtn"
-        android:layout_marginTop="72dp"
-        android:textColor="#ffffff"
-        android:layout_below="@+id/loginBtn"
+        android:layout_marginTop="51dp"
+        android:layout_below="@+id/showBtn"
         android:layout_centerHorizontal="true" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Show"
+        android:id="@+id/showBtn"
+        android:textSize="15dp"
+        android:textColor="@color/abc_secondary_text_material_dark"
+        android:layout_below="@+id/password_text"
+        android:layout_alignParentEnd="true" />
+
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:id="@+id/password_text"
+        android:padding="5dp"
+        android:textIsSelectable="false"
+        android:hint="Password"
+        android:inputType="textPassword"
+        android:layout_centerVertical="true"
+        android:layout_alignParentStart="true"
+        android:textColorHint="#ffffff"
+        android:textAlignment="center" />
+
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:inputType="textEmailAddress|textWebEmailAddress"
+        android:ems="10"
+        android:id="@+id/emailAdress_text"
+        android:padding="5dp"
+        android:textIsSelectable="false"
+        android:hint="Username / Email"
+        android:layout_above="@+id/password_text"
+        android:layout_alignParentEnd="true"
+        android:layout_marginBottom="15dp"
+        android:textColorHint="#ffffff"
+        android:textAlignment="center" />
 </RelativeLayout>

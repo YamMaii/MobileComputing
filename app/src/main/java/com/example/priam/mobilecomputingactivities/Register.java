@@ -34,11 +34,11 @@ public class Register extends AppCompatActivity {
         registerPassword = (EditText) findViewById(R.id.registerPassword);
         registerVerifyPassword = (EditText) findViewById(R.id.registerVerifyPassword);
         registerButton = (Button) findViewById(R.id.btnRegister);
-        viewAccountsButton = (Button) findViewById(R.id.buttonViewAccounts);
+      /*  viewAccountsButton = (Button) findViewById(R.id.buttonViewAccounts); */
         backButton = (Button) findViewById(R.id.buttonBack);
         registerFname.requestFocus();
         addAccount();
-        viewAll();
+       /* viewAll(); */
         back();
     }
 
@@ -123,7 +123,7 @@ public class Register extends AppCompatActivity {
     }
 
 
-    public void viewAll() {
+   /* public void viewAll() {
 
 
         viewAccountsButton.setOnClickListener(new View.OnClickListener() {
@@ -150,7 +150,7 @@ public class Register extends AppCompatActivity {
             }
         });
 
-    }
+    } */
 
     public void showMessage(String title, String Message) {
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
